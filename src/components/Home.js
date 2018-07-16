@@ -23,7 +23,7 @@ class Home extends Component{
                                 </div>
                                 <div class="slider-overlay"></div>
                             </div>
-                            <div class="item" style={{background:'url("https://i.ytimg.com/vi/P5gNSH1ex1s/maxresdefault.jpg") no-repeat scroll center center / cover'}}>
+                            <div class="item" style={{background:'url("http://madiunkota.go.id/wp-content/uploads/2017/11/ifa-1080x675.jpg") no-repeat scroll center center / cover'}}>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
@@ -38,7 +38,7 @@ class Home extends Component{
                                 <div class="slider-overlay"></div>
                             </div>
                             
-                            <div class="item">
+                            <div class="item" style={{background:'url("https://i.ytimg.com/vi/P5gNSH1ex1s/maxresdefault.jpg") no-repeat scroll center center / cover'}}>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
