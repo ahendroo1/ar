@@ -9,12 +9,12 @@ class Home extends Component{
                 <section class="slider-area">
                     <div id="home-one-crousel" class="carousel slide">
                         <div class="carousel-inner" role="listbox">
-                            <div class="item active">
+                            <div class="item active" style={{background:'url("images/home1/bgandrorohmana.jpeg") no-repeat scroll center center / cover'}}>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                             <div class="slider-content text-left">
-                                                <h2 class="first-animation">Adam Patrik</h2>
+                                                <h2 class="first-animation">Andro Rohmana</h2>
                                                 <h3 class="second-animation">Let's Get To<br />Work in 2016</h3>
                                                 <a  class="bordered-button fourth-animation">Let's Go<i class="fa fa-long-arrow-right"></i></a>
                                             </div>
@@ -23,12 +23,12 @@ class Home extends Component{
                                 </div>
                                 <div class="slider-overlay"></div>
                             </div>
-                            <div class="item">
+                            <div class="item" style={{background:'url("https://i.ytimg.com/vi/P5gNSH1ex1s/maxresdefault.jpg") no-repeat scroll center center / cover'}}>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                             <div class="slider-content text-left">
-                                                <h2 class="first-animation">Adam Patrik</h2>
+                                                <h2 class="first-animation">Teman Andro</h2>
                                                 <h3 class="second-animation">Let's Get To<br />Work in 2016</h3>
                                                 <a class="bordered-button fourth-animation">Let's Go <i class="fa fa-long-arrow-right"></i></a>
                                             </div>
@@ -150,11 +150,11 @@ class Home extends Component{
                         <div class="row">
                             <div class="col-md-6 col-xs-12 no-padding-right">
                                 <div class="mission-content">
-                                    <h4>Mission & Vision</h4>
-                                    <h2 class="section-title">Changes <span>We Need</span></h2>
+                                    <h4>Visi & Misi</h4>
+                                    <h2 class="section-title">Teman <span>Andro</span></h2>
                                     <p>“Organizing for Action: We’re the people who don’t just support progressive change—we’re fighting for it.”</p>
                                     <div class="singnature">
-                                        <a >Adam Patrik Bio <i class="fa fa-long-arrow-right"></i></a>
+                                        <a >Andro Rohmana Putra <i class="fa fa-long-arrow-right"></i></a>
                                         <img src="images/home1/singnature.png" alt="" />
                                     </div>
                                 </div>

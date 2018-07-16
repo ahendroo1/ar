@@ -487,8 +487,7 @@
     -webkit-transform: scale(1);
     transform: scale(1);
 }
-#home-one-crousel .item{
-    background: url(../images/home1/slider1.jpg) no-repeat scroll center center / cover;
+#home-one-crousel .item {
     padding: 120px 0 147px;
     width: 100%;
 }

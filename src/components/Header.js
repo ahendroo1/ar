@@ -65,11 +65,12 @@ class Header extends Component {
                         </ul>
                     </nav>
                     <ul class="pull-right search-cart">
-                        <li><a  id="search-toggle"><i class="fa fa-search"></i></a></li> 
+
                         <li class="user-profile-menu">
                             <a ><i class="fa fa-user"></i></a>
                             <ul>
-                                {/* <li><a href="#">My Campaign</a></li> */}
+                                <li><a ><i class="fa fa-lock"></i> Masuk</a></li>
+                                <li><a ><i class="fa fa-gear"></i> Daftar</a></li>
                             </ul>
                         </li>
                         <li><a ><i class="fa fa-shopping-basket"></i><span>(2)</span></a></li> 
