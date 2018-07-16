@@ -7,15 +7,6 @@ class Header extends Component {
         
         return(
             <div>
-                <div class="color-switcher">
-                    <a class="toggle-switch" ><i class="fa fa-cog"></i></a>
-                    <div class="style-choose">
-                        <a  data-color="preset1"><img alt="Preset" src="images/colorpreset/preset1/preset1.png" /></a>
-                        <a  data-color="preset2"><img alt="Preset" src="images/colorpreset/preset2/preset2.png" /></a>
-                        <a  data-color="preset3"><img alt="Preset" src="images/colorpreset/preset3/preset3.png" /></a>
-                        <a  data-color="preset4"><img alt="Preset" src="images/colorpreset/preset4/preset4.png" /></a>
-                    </div>
-                </div>
 
                 <header class="header-area">
                     <ul class="social-icon pull-left">
@@ -59,7 +50,7 @@ class Header extends Component {
                             <li><a href="event.html">Event</a></li>
                         </ul>
                         <div class="pull-left logo-area">
-                            <a ><img src="images/home1/logo.png" alt="Logo" /></a>
+                            <a ><img src="http://androrohmana.com/countdown/images/logo-TA-3.png" alt="Logo" /></a>
                         </div>
                         <ul class="menu-right pull-left">
                             <li><a >Photos</a></li>

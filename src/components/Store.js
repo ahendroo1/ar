@@ -10,12 +10,12 @@ class Store extends Component{
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-xs-12 text-center">
-                                <h2 class="section-title">Shop for <span>Campaign</span></h2>
-                                <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br />labore et dolore magna aliqua.</p>
+                                <h2 class="section-title">Teman Andro  <span>Merchandise</span></h2>
+                                <p class="section-subtitle">Dapatkan sekarang T-shirt Teman Andro disini.</p>
                             </div>
                         </div>
                         <div class="row">
-                            <div id="product-crousel" class="owl-carousel owl-theme">
+                            {/* <div id="product-crousel" class="owl-carousel owl-theme"> */}
                                 <div class="col-md-4 col-xs-12 text-center">
                                     <div class="product-details">
                                         <div class="product-img">
@@ -76,7 +76,7 @@ class Store extends Component{
                                         <p>$15.00</p>
                                     </div>
                                 </div>
-                            </div>
+                            {/* </div> */}
                         </div>
                     </div>
                 </section>

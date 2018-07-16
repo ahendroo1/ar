@@ -64,37 +64,12 @@ class Home extends Component{
 
                     </div>
                 </section>
-                <section class="donate-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12 text-center">
-                                <div class="donate-content">
-                                    <h2 class="section-title">
-                                        Donate <span>Today!</span>
-                                    </h2>
-                                    <p class="section-subtitle">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                        ut <br />labore et dolore magna aliqua.
-                                    </p>
-                                    <div class="donate-buttons">
-                                        <span>$25</span>
-                                        <span>$50</span>
-                                        <span class="active">$100</span>
-                                        <span>$500</span>
-                                        <span>More</span>
-                                        <a class="filled-button">donate now</a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
                 <section class="latest-news">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-xs-12 text-center">
-                                <h2 class="section-title">Latest <span>News</span></h2>
+                                <h2 class="section-title">Berita <span>Teman Andro</span></h2>
                             </div>
                         </div>
                         <div class="row">
