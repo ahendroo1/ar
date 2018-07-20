@@ -14,7 +14,7 @@ class Header extends Component {
 
     componentDidMount(){
         
-        axios.get('http://deploytest.us.openode.io/api/user/' + this.state.user_id)
+        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
@@ -54,7 +54,6 @@ class Header extends Component {
                             <li><a >Volunteer</a></li>
                             <li>
                                 <a >Shop</a>
-                               
                             </li>
                         </ul>
                     </nav>
