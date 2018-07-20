@@ -1,7 +1,29 @@
 import React, { Component } from 'react' ;
-
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Header extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            user_id: localStorage.getItem('data_login'),
+            data_user:[]
+        }
+    }
+
+    componentDidMount(){
+        
+        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
+        .then((response_user) => {
+            this.setState({data_user: response_user.data})
+            // console.log(response_user)
+            // localStorage.setItem('data', response_session.data)
+        });
+
+        console.log(localStorage.getItem("data_login"))
+
+    }
 
     render(){
         
@@ -17,36 +39,11 @@ class Header extends Component {
                     </ul>
                     <nav class="main-menu hidden-xs hidden-sm">
                         <ul class="menu-left pull-left">
-                            <li class="menu-has-children">
-                                <a >Home</a>
-                                <ul>
-                                    <li><a >Home 1</a></li>
-                                    <li><a>Home 2</a></li>
-                                    <li><a >Home 3</a></li>
-                                    <li class="child-has-children">
-                                        <a >Home 4</a>
-                                        <ul>
-                                            <li><a >Sample Home 1</a></li>
-                                            <li><a >Sample Home 2</a></li>
-                                            <li class="child-has-children">
-                                                <a >Sample Home 3</a>
-                                                <ul>
-                                                    <li><a >Extra Homepage 1</a></li>
-                                                    <li><a >Extra Homepage 2</a></li>
-                                                    <li><a >Extra Homepage 3</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li>
+                                <Link to="/" >Home</Link>
                             </li>
                             <li><a href="biography.html">Biography</a></li>
-                            <li class="menu-has-children">
-                                <a href="news.html">News</a>
-                                <ul>
-                                    <li><a href="newsDetails.html">News Details</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="news.html">News</a></li>
                             <li><a href="event.html">Event</a></li>
                         </ul>
                         <div class="pull-left logo-area">
@@ -55,23 +52,21 @@ class Header extends Component {
                         <ul class="menu-right pull-left">
                             <li><a >Photos</a></li>
                             <li><a >Volunteer</a></li>
-                            <li class="menu-has-children">
+                            <li>
                                 <a >Shop</a>
-                                <ul>
-                                    <li><a >Shop Details</a></li>
-                                </ul>
+                               
                             </li>
-                            <li><a >Donate</a></li> 
                         </ul>
                     </nav>
                     <ul class="pull-right search-cart">
 
                         <li class="user-profile-menu">
-                            <a ><i class="fa fa-user"></i></a>
-                            <ul>
-                                <li><a ><i class="fa fa-lock"></i> Masuk</a></li>
-                                <li><a ><i class="fa fa-gear"></i> Daftar</a></li>
-                            </ul>
+                            <Link to="login"><i class="fa fa-lock"></i>
+                            {this.state.data_user.username 
+                                ? ` ${this.state.data_user.username}` 
+                                : ' Masuk / Daftar '
+                            }
+                            </Link>
                         </li>
                         <li><a ><i class="fa fa-shopping-basket"></i><span>(2)</span></a></li> 
                         
@@ -94,7 +89,7 @@ class Header extends Component {
 
                 <div class="hidden-lg hidden-md" id="toggle-menu">
                     <div class="pull-left logo-area">
-                        <a ><img src="images/home1/logo.png" alt="Logo" /></a>
+                        <a ><img src="http://androrohmana.com/countdown/images/logo-TA-3.png" alt="Logo" /></a>
                     </div>
                     <div class="mobile-menu-toggle pull-right">
                         <a ><i class="fa fa-bars"></i></a>
