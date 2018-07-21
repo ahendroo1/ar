@@ -14,14 +14,14 @@ class Header extends Component {
 
     componentDidMount(){
         
-        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
+        axios.get('http://deploytest.us.openode.io/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
             // localStorage.setItem('data', response_session.data)
         });
 
-        console.log(localStorage.getItem("data_login"))
+        // console.log(localStorage.getItem("data_login"))
 
     }
 
