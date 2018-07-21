@@ -49,7 +49,7 @@ class Login extends Component{
                 logemail: this.refs.username.value,
                 logpassword: this.refs.password.value
             }
-            var url = 'http://deploytest.us.openode.io/api/login/';
+            var url = 'http://temanandro.us.openode.io/api/login/';
             axios.post(url, data_login)
             .then((response_cari) => {
                 // console.log(response_cari)
@@ -85,7 +85,7 @@ class Login extends Component{
 
                 }
 
-                var url = 'http://deploytest.us.openode.io/api/login/register';
+                var url = 'http://temanandro.us.openode.io/api/login/register';
                 axios.post(url, data_reg)
                 .then((response_reg) => {
                     if(response_reg.data.status > 0){
