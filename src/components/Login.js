@@ -1,13 +1,21 @@
 import React, { Component } from 'react' ;
 import axios from 'axios' ;
 import { Redirect } from 'react-router-dom';
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
+import { InputText } from "primereact/inputtext";
 
 class Login extends Component{
     constructor(){
         super()
+        this.onHide = this.onHide.bind(this);
         this.state = {
+            forgot_pass: false,
             user_id: localStorage.getItem('data_login')
         }
+    }
+    onHide(event) {
+        this.setState({forgot_pass: false});
     }
 
     componentDidMount(){
@@ -111,6 +119,10 @@ class Login extends Component{
         }
 
     }
+    forgot_pass(event) {
+        this.setState({forgot_pass: true});
+    }
+
 
     render(){
         if(this.state.user_id !== null){
@@ -153,10 +165,17 @@ class Login extends Component{
                                 </div>
                                 {/* { this.state.username } */}
                                 <div class="form-group">
-                                    <a style={{color: 'black'}}>
-                                        Lupa Password ...?
-                                    </a>
+                                    
+                                    <Button label="Lupa Password" icon="pi pi-info-circle" onClick={() => this.forgot_pass()} />
                                 </div>
+                                <Dialog header="Lupa Password" visible={this.state.forgot_pass} width="500px" modal={true} minY={70} onHide={this.onHide} maximizable={true}>
+                                    <div className="ui-inputgroup" style={{width: '100%'}}>
+                                        <InputText placeholder="Alamat Email" style={{width: '100%'}} />
+                                        <Button className="ui-inputgroup-addon" icon="fa fa-send" onClick={() => this.forgot_pass()} />
+                                    </div>
+                                    
+                                </Dialog>
+
                                 <button type="button" class="btn btn-default pull-right" onClick={() => this.login()}><i class="fa fa-sign-in"></i> Masuk</button>
                             </div>
                             <div class="col-md-9 col-xs-12 text-left col-sm-8 col-lg-6">

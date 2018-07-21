@@ -1,5 +1,5 @@
 import React, { Component } from 'react' ;
-import Store from './Store' ;
+import Shop from './Shop' ;
 
 class Home extends Component{
     render(){
@@ -166,7 +166,7 @@ class Home extends Component{
                     </div>
                 </section>
 
-                <Store />
+                <Shop />
 
                 <section class="champaign-area">
                     <div class="container-fluid">

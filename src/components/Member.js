@@ -20,7 +20,7 @@ class Member extends Component{
             // localStorage.setItem('data', response_session.data)
         });
 
-        console.log(localStorage.getItem("data_login"))
+        // console.log(localStorage.getItem("data_login"))
 
         if(this.state.user_id === null){
 

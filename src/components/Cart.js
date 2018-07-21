@@ -2,7 +2,7 @@ import React, { Component } from 'react' ;
 import axios from 'axios' ;
 import { Redirect } from 'react-router-dom';
 
-class Login extends Component{
+class Chart extends Component{
     constructor(){
         super()
         this.state = {
@@ -20,13 +20,13 @@ class Login extends Component{
             // localStorage.setItem('data', response_session.data)
         });
 
-        console.log(localStorage.getItem("data_login"))
+        // console.log(localStorage.getItem("data_login"))
 
         if(this.state.user_id === null){
 
             return (<Redirect to={'/login'}/>)
         }
-        
+
     }
 
     render(){
@@ -57,12 +57,7 @@ class Login extends Component{
                 <section class="single-singe-area">
                     <div class="container">
                         <div class="row">
-                        <img src="https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png" style={{width:"100px", paddingBottom:"20px"}} />
-                        <br />
-                        <h3>{ this.state.data_user.username }</h3>
-                        <br />
-                        <p>{ this.state.data_user.email }</p>
-                        <p>{ this.state.data_user._id }</p>
+                            Cart page 
                         </div>
                     </div>
                 </section>
@@ -71,4 +66,4 @@ class Login extends Component{
     }
 }
 
-export default Login ;
+export default Chart ;
