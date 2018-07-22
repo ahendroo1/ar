@@ -25,14 +25,13 @@ class Shop extends Component{
 
     componentDidMount(){
 
-        axios.get('http://temanandro.us.openode.io/api/barang/show_data')
+        axios.get('http://localhost:3002/api/barang/show_data')
         .then((response_barang) => {
             console.log(response_barang)
             this.setState({data_barang: response_barang.data})
         });
 
         // console.log(localStorage.getItem("data_login"))
-
 
     }
 
