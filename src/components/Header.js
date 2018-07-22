@@ -14,7 +14,7 @@ class Header extends Component {
 
     componentDidMount(){
         
-        axios.get('http://temanandro.us.openode.io/api/login/' + this.state.user_id)
+        axios.get('http://localhost:3002/api/login/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)

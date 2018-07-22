@@ -15,7 +15,7 @@ class Confirm_login extends Component{
     componentDidMount(){
         const { match: { params } } = this.props;
         
-        axios.get(`http://temanandro.us.openode.io/api/login/confirm_registrasi/${params._id}/${params.pass}`)
+        axios.get('http://localhost:3002/api/login/confirm_registrasi/' + params._id + '/' + params.pass)
         .then((response_confirm) => {
 
             this.setState({res_confirm: response_confirm.data})

@@ -1,10 +1,10 @@
 import React, { Component } from 'react' ;
 import axios from 'axios' ;
-import Header_shop from './Header_shop'
+// import Header_shop from './Header_shop';
 // import { Redirect } from 'react-router-dom';
-// import { Dialog } from 'primereact/dialog';
-// import { Button } from 'primereact/button';
-// import { InputText } from "primereact/inputtext";
+import { Dialog } from 'primereact/dialog';
+import { Button } from 'primereact/button';
+import { InputText } from "primereact/inputtext";
 
 class Shop extends Component{
     constructor(){
@@ -14,7 +14,8 @@ class Shop extends Component{
             user_id: localStorage.getItem('data_login'),
             data_user:[],
             order_detail: false,
-            data_barang: []
+            data_barang: [],
+            data_barang_detail: []
             
         }
     }
@@ -35,8 +36,14 @@ class Shop extends Component{
 
     }
 
-    show_order(){
-        this.setState({order_detail: true})
+    show_order(barang){
+        this.setState({data_barang_detail: barang, order_detail: true})
+    }
+
+    add_cart(){
+        
+        
+
     }
 
     render(){
@@ -60,7 +67,7 @@ class Shop extends Component{
                     <div class="product-details">
                         <div class="product-img">
                             <img src={item.img_url} alt="" />
-                            <div class="filled-button" onClick={() => this.show_order()}>
+                            <div class="filled-button" onClick={() => this.show_order(item)}>
                                 <i class="fa fa-shopping-cart"></i>
                             </div>
                             
@@ -78,25 +85,23 @@ class Shop extends Component{
                 
                 {/* <Header_shop /> */}
 
-                {/* <Dialog key={index} header="Politistst tshirt 1" visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
+                <Dialog header="Politistst tshirt 1" visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
                                     
                     <div class="product-details">
                         <div class="product-img">
-                            <img src={item.img_url} alt="" />
+                            <img src={this.state.data_barang_detail.img_url} alt="" />
                         </div>
-                        <h4>{item.harg}</h4>
+                        <h4>{this.state.data_barang_detail.nama_barang}</h4>
 
                     </div>
                     <hr />
                         Jumlah Beli : 
                         <InputText placeholder="00" style={{width: '40%'}} type="text" keyfilter="pint"  />
-                        = { item.harga }
+                        = { this.state.data_barang_detail.harga }
 
-                        <Button className="ui-inputgroup-addon pull-right" icon="fa fa-shopping-cart" onClick={() => this.forgot_pass()} />
+                        <Button className="ui-inputgroup-addon pull-right" icon="fa fa-shopping-cart" onClick={() => this.add_cart()} />
                     
-                    
-                    
-                </Dialog> */}
+                </Dialog>
                 
                 <section class="shop-area">
                     <div class="container">

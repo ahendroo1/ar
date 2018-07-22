@@ -85,7 +85,7 @@ class Login extends Component{
 
                 }
 
-                var url = 'http://temanandro.us.openode.io/api/login/register';
+                var url = 'http://localhost:3002/api/login/register';
                 axios.post(url, data_reg)
                 .then((response_reg) => {
                     if(response_reg.data.status > 0){
