@@ -18,6 +18,7 @@ class Shop extends Component{
             
         }
     }
+    
     onHide(event) {
         this.setState({order_detail: false});
     }
