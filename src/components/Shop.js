@@ -2,9 +2,9 @@ import React, { Component } from 'react' ;
 import axios from 'axios' ;
 import Header_shop from './Header_shop'
 // import { Redirect } from 'react-router-dom';
-import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
-import { InputText } from "primereact/inputtext";
+// import { Dialog } from 'primereact/dialog';
+// import { Button } from 'primereact/button';
+// import { InputText } from "primereact/inputtext";
 
 class Shop extends Component{
     constructor(){
@@ -76,7 +76,7 @@ class Shop extends Component{
         return(
             <div>
                 
-                <Header_shop />
+                {/* <Header_shop /> */}
 
                 {/* <Dialog key={index} header="Politistst tshirt 1" visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
                                     
