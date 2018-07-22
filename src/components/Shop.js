@@ -103,7 +103,7 @@ class Shop extends Component{
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-xs-12 text-center">
-                                <h2 class="section-title">Teman Andro  <span>Merchandise</span></h2>
+                                <h2 class="section-title">Teman Andro  <span> M </span></h2>
                                 <p class="section-subtitle">Dapatkan sekarang T-shirt Teman Andro disini.</p>
                             </div>
                         </div>
