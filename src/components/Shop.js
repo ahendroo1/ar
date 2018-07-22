@@ -1,5 +1,5 @@
 import React, { Component } from 'react' ;
-import axios from 'axios' ;
+import Axios from 'axios' ;
 // import Header_shop from './Header_shop';
 // import { Redirect } from 'react-router-dom';
 import { Dialog } from 'primereact/dialog';
@@ -26,7 +26,7 @@ class Shop extends Component{
 
     componentDidMount(){
 
-        axios.get('http://localhost:3002/api/barang/show_data')
+        Axios.get('http://localhost:3002/api/barang/show_data')
         .then((response_barang) => {
             console.log(response_barang)
             this.setState({data_barang: response_barang.data})
@@ -42,7 +42,7 @@ class Shop extends Component{
 
     add_cart(){
         
-        
+
 
     }
 
@@ -85,7 +85,7 @@ class Shop extends Component{
                 
                 {/* <Header_shop /> */}
 
-                <Dialog header="Politistst tshirt 1" visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
+                <Dialog header={this.state.data_barang_detail.nama_barang} visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
                                     
                     <div class="product-details">
                         <div class="product-img">
@@ -107,7 +107,7 @@ class Shop extends Component{
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-xs-12 text-center">
-                                <h2 class="section-title">Teman Andro  <span> M </span></h2>
+                                <h2 class="section-title">Teman Andro  <span> Merchandise </span></h2>
                                 <p class="section-subtitle">Dapatkan sekarang T-shirt Teman Andro disini.</p>
                             </div>
                         </div>
