@@ -18,7 +18,7 @@ class Shop extends Component{
             
         }
     }
-    
+
     onHide(event) {
         this.setState({order_detail: false});
     }
@@ -27,7 +27,7 @@ class Shop extends Component{
 
         axios.get('http://temanandro.us.openode.io/api/barang/show_data')
         .then((response_barang) => {
-            // console.log(response_barang)
+            console.log(response_barang)
             this.setState({data_barang: response_barang.data})
         });
 
