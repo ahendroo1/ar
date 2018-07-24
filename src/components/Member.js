@@ -29,6 +29,11 @@ class Member extends Component{
         
     }
 
+    logout(){
+        localStorage.removeItem('data_login')
+        window.location.href = 'http://localhost:3000/'
+    }
+
     render(){
 
         if(this.state.user_id === null){
@@ -63,6 +68,8 @@ class Member extends Component{
                         <br />
                         <p>{ this.state.data_user.email }</p>
                         <p>{ this.state.data_user._id }</p>
+
+                        <button class="btn btn-primary" onClick={() => this.logout()}>  Keluar </button>
                         </div>
                     </div>
                 </section>

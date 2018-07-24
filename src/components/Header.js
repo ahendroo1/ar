@@ -14,7 +14,7 @@ class Header extends Component {
 
     componentDidMount(){
         
-        axios.get('http://localhost:3002/api/login/' + this.state.user_id)
+        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
@@ -60,10 +60,10 @@ class Header extends Component {
                     <ul class="pull-right search-cart">
 
                         <li class="user-profile-menu">
-                            <Link to="login"><i class="fa fa-lock"></i>
+                            <Link to="login">
                             {this.state.data_user.username 
                                 ? ` ${this.state.data_user.username}` 
-                                : ' Masuk / Daftar '
+                                : 'Masuk / Daftar '
                             }
                             </Link>
                         </li>

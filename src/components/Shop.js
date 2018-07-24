@@ -1,10 +1,11 @@
 import React, { Component } from 'react' ;
-import Axios from 'axios' ;
+import axios from 'axios' ;
 // import Header_shop from './Header_shop';
 // import { Redirect } from 'react-router-dom';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
-import { InputText } from "primereact/inputtext";
+// import { InputText } from "primereact/inputtext";
+import { Growl } from 'primereact/growl';
 
 class Shop extends Component{
     constructor(){
@@ -26,28 +27,61 @@ class Shop extends Component{
 
     componentDidMount(){
 
-        Axios.get('http://localhost:3002/api/barang/show_data')
+        axios.get('http://localhost:3002/api/barang/show_data')
         .then((response_barang) => {
             console.log(response_barang)
             this.setState({data_barang: response_barang.data})
         });
 
-        // console.log(localStorage.getItem("data_login"))
-
+        // console.log(localStorage.getItem('data_login'))
+        // console.log(localStorage.getItem("data_keranjang"))
     }
 
     show_order(barang){
-        this.setState({data_barang_detail: barang, order_detail: true})
+        if(this.state.data_barang_detail !== []){
+
+            this.setState({data_barang_detail: barang, order_detail: true})
+
+        } else {
+
+            this.setState({data_barang_detail: []})
+
+        }
     }
 
-    add_cart(){
-        
+    add_cart = () => {
 
+        if (this.state.user_id === null) {
+            // this.growl.show({severity:'danger', summary:'Login', detail:'Silahkan Masuk atau Daftar untuk melakukan Order'});
+            window.location.href = 'http://localhost:3000/login';
 
+        } else {
+            
+            axios.post('http://localhost:3002/api/store/cart', {
+
+                user_id: this.state.user_id,
+                nama_barang: this.state.data_barang_detail.nama_barang,
+                harga: this.state.data_barang_detail.harga,
+            
+            }).then((response_cart) => {
+                console.log(response_cart)
+                this.growl.show({severity:'success', summary:'Keranjang', detail:'Berhasil di tambahkan ke Keranjang'});
+                
+                // if(response_reg.data.status > 0){
+
+                //     this.growl.show({severity:'success', summary:'Keranjang', detail:'Berhasil di tambahkan ke Keranjang'});
+                    
+                // } else {
+
+                //     this.setState({konfPass: 'Berhasil Registrasi, Cek email anda untuk Konfirmasi Pendataran'})
+                                            
+                // }
+            });
+        }
     }
+
 
     render(){
-
 
         const data_barang = this.state.data_barang.map((item, index) => {
             // var judul = item.title;
@@ -82,11 +116,11 @@ class Shop extends Component{
 
         return(
             <div>
-                
                 {/* <Header_shop /> */}
 
                 <Dialog header={this.state.data_barang_detail.nama_barang} visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
                                     
+                    <Growl ref={(el) => this.growl = el}></Growl>
                     <div class="product-details">
                         <div class="product-img">
                             <img src={this.state.data_barang_detail.img_url} alt="" />
@@ -96,7 +130,7 @@ class Shop extends Component{
                     </div>
                     <hr />
                         Jumlah Beli : 
-                        <InputText placeholder="00" style={{width: '40%'}} type="text" keyfilter="pint"  />
+                        <input placeholder="00" ref="jumbel" style={{width: '40%'}} type="text" keyfilter="pint"  />
                         = { this.state.data_barang_detail.harga }
 
                         <Button className="ui-inputgroup-addon pull-right" icon="fa fa-shopping-cart" onClick={() => this.add_cart()} />

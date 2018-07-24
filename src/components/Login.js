@@ -24,19 +24,21 @@ class Login extends Component{
         // .then((response_session) => {
         //     console.log(response_session)
         //     // localStorage.setItem('data', response_session.data)
-        
         // });
 
         if(this.state.user_id === null){
 
             return (<Redirect to={'/login'} />)
+
         }else{
+
             return (<Redirect to={'/member'} userId={this.state.user_id} />)
         }
 
         // console.log(localStorage.getItem('data_login'))
 
     }
+
 
     login(){
 
@@ -49,20 +51,21 @@ class Login extends Component{
                 logemail: this.refs.username.value,
                 logpassword: this.refs.password.value
             }
-            var url = 'http://temanandro.us.openode.io/api/login/';
-            axios.post(url, data_login)
+            // var url = 'http://localhost:3002/api/login/';
+            axios.post('http://localhost:3002/api/login/', data_login)
             .then((response_cari) => {
                 // console.log(response_cari)
                 // console.log(response_cari.data._id)
-                if(response_cari.data._id){
+                if(response_cari.data.status !== 0){
 
                     this.setState({login: 'berhasil', user_id: response_cari.data._id })
                     localStorage.setItem('data_login', response_cari.data._id)
+                    window.location.href = 'http://localhost:3000/member';
 
                 } else {
 
-                    this.setState({login: 'Username dan Password tidak terdaftar, Silahkan Daftar Member'})
-                
+                    this.setState({login: 'Konfirmasi Registrasi telah dikirimkan ke email, Silahkan Cek Email anda'})
+
                 }
             });
 
@@ -77,26 +80,22 @@ class Login extends Component{
             if(this.refs.nama_lengkap.value 
                 && this.refs.email.value ){
                 
-                var data_reg = {
-
+            
+                axios.post('http://localhost:3002/api/login/register', {
                     username: this.refs.nama_lengkap.value,
                     email: this.refs.email.value,
                     password: this.refs.password_registrasi.value
-
-                }
-
-                var url = 'http://localhost:3002/api/login/register';
-                axios.post(url, data_reg)
+                })
                 .then((response_reg) => {
                     if(response_reg.data.status > 0){
 
                         this.setState({konfPass: 'Email yang anda masukkan sudah terdaftar'})
-                        console.log(response_reg)
+                        // console.log(response_reg)
                         
                     }else{
 
                         this.setState({konfPass: 'Berhasil Registrasi, Cek email anda untuk Konfirmasi Pendataran'})
-                        console.log(response_reg)
+                        // console.log(response_reg)
                                                 
                     }
 
@@ -115,10 +114,12 @@ class Login extends Component{
             }
 
         } else {
+
             this.setState({konfPass: 'Konfirmasi Password tidak cocok'})
         }
 
     }
+
     forgot_pass(event) {
         this.setState({forgot_pass: true});
     }
