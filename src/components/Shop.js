@@ -13,6 +13,7 @@ class Shop extends Component{
         this.onHide = this.onHide.bind(this);
         this.state = {
             user_id: localStorage.getItem('data_login'),
+            store_id: localStorage.getItem('id_store'),
             data_user:[],
             order_detail: false,
             data_barang: [],
@@ -29,23 +30,27 @@ class Shop extends Component{
 
         axios.get('http://localhost:3002/api/barang/show_data')
         .then((response_barang) => {
-            console.log(response_barang)
+            // console.log(response_barang)
             this.setState({data_barang: response_barang.data})
         });
-
+        // axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id )
+        // .then((data_store) => {
+        //     console.log(data_store);
+        // })
+        // console.log(this.state.store_id)
         // console.log(localStorage.getItem('data_login'))
         // console.log(localStorage.getItem("data_keranjang"))
+    }
+    setLocalstorage(){
+        localStorage.setItem('id_store', this.state.data_add_cart._id);
+        // console.log(this.state.data_add_cart._id)
     }
 
     show_order(barang){
         if(this.state.data_barang_detail !== []){
-
             this.setState({data_barang_detail: barang, order_detail: true})
-
         } else {
-
             this.setState({data_barang_detail: []})
-
         }
     }
 
@@ -56,27 +61,32 @@ class Shop extends Component{
             window.location.href = 'http://localhost:3000/login';
 
         } else {
-            
-            axios.post('http://localhost:3002/api/store/cart', {
 
-                user_id: this.state.user_id,
-                nama_barang: this.state.data_barang_detail.nama_barang,
-                harga: this.state.data_barang_detail.harga,
-            
-            }).then((response_cart) => {
-                console.log(response_cart)
-                this.growl.show({severity:'success', summary:'Keranjang', detail:'Berhasil di tambahkan ke Keranjang'});
+            if(!this.refs.jumbel.value){
+                this.growl.show({severity:'error', summary:'Keranjang', detail:'Masukkan Jumlah Beli'});
+                   
+            }else{
+
+                axios.post('http://localhost:3002/api/store/cart', {
+
+                    user_id: this.state.user_id,
+                    nama_barang: this.state.data_barang_detail.nama_barang,
+                    harga: this.state.data_barang_detail.harga,
+                    jumlah_beli: this.refs.jumbel.value,
+                    img_url: this.state.data_barang_detail.img_url
                 
-                // if(response_reg.data.status > 0){
+                }).then((response_cart) => {
 
-                //     this.growl.show({severity:'success', summary:'Keranjang', detail:'Berhasil di tambahkan ke Keranjang'});
-                    
-                // } else {
+                    // console.log(response_cart)
+                    this.growl.show({severity:'success', summary:'Keranjang', detail:'Berhasil di tambahkan ke Keranjang'});
+                    // localStorage.setItem('id_store', response_cart.data._id);
+                    this.setState({order_detail: false, data_add_cart:response_cart.data})
+                    this.setLocalstorage()
 
-                //     this.setState({konfPass: 'Berhasil Registrasi, Cek email anda untuk Konfirmasi Pendataran'})
-                                            
-                // }
-            });
+                });
+
+            }
+            
         }
     }
 
@@ -117,10 +127,9 @@ class Shop extends Component{
         return(
             <div>
                 {/* <Header_shop /> */}
-
+                <Growl ref={(el) => this.growl = el}></Growl>
                 <Dialog header={this.state.data_barang_detail.nama_barang} visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
                                     
-                    <Growl ref={(el) => this.growl = el}></Growl>
                     <div class="product-details">
                         <div class="product-img">
                             <img src={this.state.data_barang_detail.img_url} alt="" />
@@ -129,8 +138,8 @@ class Shop extends Component{
 
                     </div>
                     <hr />
-                        Jumlah Beli : 
-                        <input placeholder="00" ref="jumbel" style={{width: '40%'}} type="text" keyfilter="pint"  />
+                        Jumlah Beli :
+                        <input ref="jumbel" placeholder="00" style={{width: '40%'}} type="number"   />
                         = { this.state.data_barang_detail.harga }
 
                         <Button className="ui-inputgroup-addon pull-right" icon="fa fa-shopping-cart" onClick={() => this.add_cart()} />

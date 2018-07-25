@@ -8,7 +8,9 @@ class Header extends Component {
         super();
         this.state = {
             user_id: localStorage.getItem('data_login'),
-            data_user:[]
+            store_id: localStorage.getItem('id_store'),
+            data_user:[],
+            data_shop:[],
         }
     }
 
@@ -18,6 +20,14 @@ class Header extends Component {
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
+            // localStorage.setItem('data', response_session.data)
+        });
+
+        axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id)
+        .then((response_shop) => {
+            this.setState({data_shop: response_shop.data})
+            console.log(response_shop)
+            // console.log(store_id)
             // localStorage.setItem('data', response_session.data)
         });
 
@@ -52,9 +62,7 @@ class Header extends Component {
                         <ul class="menu-right pull-left">
                             <li><a >Photos</a></li>
                             <li><a >Volunteer</a></li>
-                            <li>
-                                <a >Shop</a>
-                            </li>
+                            <li><Link to="/shop" >Shop</Link></li>
                         </ul>
                     </nav>
                     <ul class="pull-right search-cart">
@@ -67,7 +75,7 @@ class Header extends Component {
                             }
                             </Link>
                         </li>
-                        <li><a ><i class="fa fa-shopping-basket"></i><span>(2)</span></a></li> 
+                        <li><Link to="/store"><i class="fa fa-shopping-basket"></i><span>{this.state.data_shop.length}</span></Link></li> 
                         
                     </ul>
                     <div class="clearfix"></div>
