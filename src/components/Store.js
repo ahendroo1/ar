@@ -24,7 +24,7 @@ class Store extends Component{
 
     componentDidMount(){
 
-        axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id)
+        axios.get('http://temanandro.us.openode.io/api/store/data/cart/' + this.state.store_id)
         .then((response_shop) => {
             this.setState({data_shop: response_shop.data})
             console.log(response_shop)
@@ -32,7 +32,7 @@ class Store extends Component{
             // localStorage.setItem('data', response_session.data)
         });
 
-        axios.get('http://localhost:3002/api/store/data/order/' + this.state.user_id)
+        axios.get('http://temanandro.us.openode.io/api/store/data/order/' + this.state.user_id)
         .then((response_order) => {
             this.setState({data_order: response_order.data})
             console.log(response_order)

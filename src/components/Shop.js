@@ -28,7 +28,7 @@ class Shop extends Component{
 
     componentDidMount(){
 
-        axios.get('http://localhost:3002/api/barang/show_data')
+        axios.get('http://temanandro.us.openode.io/api/barang/show_data')
         .then((response_barang) => {
             // console.log(response_barang)
             this.setState({data_barang: response_barang.data})
@@ -58,7 +58,7 @@ class Shop extends Component{
 
         if (this.state.user_id === null) {
             // this.growl.show({severity:'danger', summary:'Login', detail:'Silahkan Masuk atau Daftar untuk melakukan Order'});
-            window.location.href = 'http://localhost:3000/login';
+            window.location.href = 'http://temanandro.netlify.com/login';
 
         } else {
 
@@ -67,7 +67,7 @@ class Shop extends Component{
                    
             }else{
 
-                axios.post('http://localhost:3002/api/store/cart', {
+                axios.post('http://temanandro.us.openode.io/api/store/cart', {
 
                     user_id: this.state.user_id,
                     nama_barang: this.state.data_barang_detail.nama_barang,
