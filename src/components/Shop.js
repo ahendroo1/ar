@@ -83,6 +83,8 @@ class Shop extends Component{
                     this.setState({order_detail: false, data_add_cart:response_cart.data})
                     this.setLocalstorage()
 
+                }).catch((err) => {
+                    console.log(err)
                 });
 
             }
