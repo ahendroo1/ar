@@ -27,6 +27,7 @@ class Shop extends Component{
     }
 
     componentDidMount(){
+        console.log('data didmount')
 
         axios.get('http://temanandro.us.openode.io/api/barang/show_data')
         .then((response_barang) => {
