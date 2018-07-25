@@ -15,6 +15,7 @@ import Confirm_registrasi from './components/Confirm_registrasi';
 import  Cart  from './components/Cart' ;
 import  Shop  from './components/Shop' ;
 import  Store  from './components/Store' ;
+import  Film  from './components/Film' ;
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/cart" component={Cart} />
           <Route path="/shop" component={Shop} />
           <Route path="/store" component={Store} />
+          <Route path="/film" component={Film} />
           <Route path="/confirm_registrasi/:_id/:pass" component={Confirm_registrasi} />
         <Footer />
       </div>
