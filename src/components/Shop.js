@@ -29,10 +29,10 @@ class Shop extends Component{
     componentDidMount(){
         // console.log('data didmount')
 
-        axios.get('http://androrohmana.us.openode.io/api/barang/show_data')
+        axios.get('http://localhost:3002/api/barang/show_data')
         .then((response_barang) => {
             console.log(response_barang)
-            this.setState({data_barang: response_barang.data})
+            this.setState({data_barang: response_barang.data.reverse()})
         });
         // axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id )
         // .then((data_store) => {
@@ -42,6 +42,7 @@ class Shop extends Component{
         // console.log(localStorage.getItem('data_login'))
         // console.log(localStorage.getItem("data_keranjang"))
     }
+
     setLocalstorage(){
         localStorage.setItem('id_store', this.state.data_add_cart._id);
         // console.log(this.state.data_add_cart._id)
@@ -59,7 +60,7 @@ class Shop extends Component{
 
         if (this.state.user_id === null) {
             // this.growl.show({severity:'danger', summary:'Login', detail:'Silahkan Masuk atau Daftar untuk melakukan Order'});
-            window.location.href = 'http://temanandro.netlify.com/login';
+            window.location.href = 'http://localhost:3002/login';
 
         } else {
 
@@ -68,7 +69,7 @@ class Shop extends Component{
                    
             }else{
 
-                axios.post('http://temanandro.us.openode.io/api/store/cart', {
+                axios.post('http://localhost:3002/api/store/cart', {
 
                     user_id: this.state.user_id,
                     nama_barang: this.state.data_barang_detail.nama_barang,
@@ -96,6 +97,13 @@ class Shop extends Component{
 
     render(){
 
+        function convertToRupiah(angka) {
+            var rupiah = '';
+            var angkarev = angka.toString().split('').reverse().join('');
+            for (var i = 0; i < angkarev.length; i++) if (i % 3 === 0) rupiah += angkarev.substr(i, 3) + '.';
+            return 'Rp. ' + rupiah.split('', rupiah.length - 1).reverse().join('');
+        }
+
         const data_barang = this.state.data_barang.map((item, index) => {
             // var judul = item.title;
             // var release = item.release_date;
@@ -104,6 +112,7 @@ class Shop extends Component{
             // let header = <img alt="bjhsx" src={'https://image.tmdb.org/t/p/w500'+item.backdrop_path}/>;
             
             return (
+                
                 // <li key="index">
                 // <h1>{title}</h1>
                 // <p>{overview}</p>
@@ -120,7 +129,7 @@ class Shop extends Component{
                             
                         </div>
                         <h4><a>{item.nama_barang}</a></h4>
-                        <p>{item.harga}</p>
+                        <p>{convertToRupiah(item.harga)}</p>
                     </div>
                 </div>
 
@@ -143,7 +152,7 @@ class Shop extends Component{
                     <hr />
                         Jumlah Beli :
                         <input ref="jumbel" placeholder="00" style={{width: '40%'}} type="number"   />
-                        = { this.state.data_barang_detail.harga }
+                        = { convertToRupiah(this.state.data_barang_detail.harga ? this.state.data_barang_detail.harga : 0 ) }
 
                         <Button className="ui-inputgroup-addon pull-right" icon="fa fa-shopping-cart" onClick={() => this.add_cart()} />
                     

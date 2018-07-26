@@ -11,11 +11,12 @@ import  Home  from './components/Home' ;
 import  News  from './components/News' ;
 import  Login  from './components/Login' ;
 import  Member  from './components/Member' ;
-import Confirm_registrasi from './components/Confirm_registrasi';
+import ConfirmRegistrasi from './components/Confirm_registrasi';
 import  Cart  from './components/Cart' ;
 import  Shop  from './components/Shop' ;
 import  Store  from './components/Store' ;
 import  Film  from './components/Film' ;
+import  DetailOrder  from './components/Detail_order' ;
 
 class App extends Component {
   render() {
@@ -30,7 +31,8 @@ class App extends Component {
           <Route path="/shop" component={Shop} />
           <Route path="/store" component={Store} />
           <Route path="/film" component={Film} />
-          <Route path="/confirm_registrasi/:_id/:pass" component={Confirm_registrasi} />
+          <Route path="/detail_order" component={DetailOrder} />
+          <Route path="/confirm_registrasi/:_id/:pass" component={ConfirmRegistrasi} />
         <Footer />
       </div>
     );

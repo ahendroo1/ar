@@ -26,7 +26,7 @@ class Header extends Component {
         axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id)
         .then((response_shop) => {
             this.setState({data_shop: response_shop.data})
-            console.log(response_shop)
+            // console.log(response_shop)
             // console.log(store_id)
             // localStorage.setItem('data', response_session.data)
         });
