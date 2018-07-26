@@ -16,14 +16,14 @@ class Header extends Component {
 
     componentDidMount(){
         
-        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
+        axios.get('http://androrohmana.us.openode.io/api/user/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
             // localStorage.setItem('data', response_session.data)
         });
 
-        axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id)
+        axios.get('http://androrohmana.us.openode.io/api/store/data/cart/' + this.state.store_id)
         .then((response_shop) => {
             this.setState({data_shop: response_shop.data})
             // console.log(response_shop)

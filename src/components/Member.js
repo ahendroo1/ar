@@ -13,7 +13,7 @@ class Member extends Component{
 
     componentDidMount(){
 
-        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
+        axios.get('http://androrohmana.us.openode.io/api/user/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
@@ -31,7 +31,7 @@ class Member extends Component{
 
     logout(){
         localStorage.removeItem('data_login')
-        window.location.href = 'http://localhost:3000/'
+        window.location.href = '/'
     }
 
     render(){

@@ -81,7 +81,7 @@ class Login extends Component{
                 && this.refs.email.value ){
                 
             
-                axios.post('http://localhost:3002/api/login/register', {
+                axios.post('http://androrohmana.us.openode.io/api/login/register', {
                     username: this.refs.nama_lengkap.value,
                     email: this.refs.email.value,
                     password: this.refs.password_registrasi.value

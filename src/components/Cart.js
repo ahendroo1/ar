@@ -13,7 +13,7 @@ class Chart extends Component{
 
     componentDidMount(){
 
-        axios.get('http://temanandro.us.openode.io/api/user/' + this.state.user_id)
+        axios.get('http://androrohmana.us.openode.io/api/user/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
