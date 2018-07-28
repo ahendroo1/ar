@@ -25,7 +25,7 @@ class Store extends Component{
 
     componentDidMount(){
 
-        axios.get('http://androrohmana.us.openode.io/api/store/data/cart/' + this.state.store_id)
+        axios.get('http://localhost:3002/api/store/data/cart/' + this.state.store_id)
         .then((response_shop) => {
             this.setState({data_shop: response_shop.data.reverse()})
             console.log(response_shop)
@@ -33,7 +33,7 @@ class Store extends Component{
             // localStorage.setItem('data', response_session.data)
         });
 
-        axios.get('http://androrohmana.us.openode.io/api/store/data/order/' + this.state.user_id)
+        axios.get('http://localhost:3002/api/store/data/order/' + this.state.user_id)
         .then((response_order) => {
             this.setState({data_order: response_order.data.reverse()})
             console.log(response_order)
@@ -67,7 +67,7 @@ class Store extends Component{
         if(this.state._id && this.state.nama_barang && this.state.harga && this.state.jumbel){
             // this.growl.show({severity:'success', summary:'Keranjang', detail:'Data Berhasil di Hapus'});
             
-            axios.get('http://androrohmana.us.openode.io/api/store/cart/delete/' + this.state._id + '/' + this.state.user_id)
+            axios.get('http://localhost:3002/api/store/cart/delete/' + this.state._id + '/' + this.state.user_id)
             .then((res_delete_cart) => {
                 // this.setState({data_delete_: response_shop.data})
                 console.log(res_delete_cart.data.ok)
@@ -98,7 +98,7 @@ class Store extends Component{
     checkout(){
         if(this.state.store_id){
             
-            axios.post('http://androrohmana.us.openode.io/api/store/checkout/', {
+            axios.post('http://localhost:3002/api/store/checkout/', {
                 id_store: this.state.store_id
             }).then((response_checkout) => {
                 this.setState({data_shop: [], store_id:[]})
@@ -127,7 +127,7 @@ class Store extends Component{
             console.log(_id)
             console.log(this.state.user_id)
             
-            axios.post('http://androrohmana.us.openode.io/api/store/cancel_order', {
+            axios.post('http://localhost:3002/api/store/cancel_order', {
                 id_store: _id,
                 id_user: this.state.user_id
             }).then((response_cancel) => {

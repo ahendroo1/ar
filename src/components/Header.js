@@ -1,6 +1,8 @@
 import React, { Component } from 'react' ;
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../App.css';
+import { Sidebar } from 'primereact/sidebar';
 
 class Header extends Component {
 
@@ -11,26 +13,26 @@ class Header extends Component {
             store_id: localStorage.getItem('id_store'),
             data_user:[],
             data_shop:[],
+            visibleLeft: false,
         }
     }
 
     componentDidMount(){
         
-        axios.get('http://androrohmana.us.openode.io/api/user/' + this.state.user_id)
+        axios.get('http://localhost:3002/api/user/' + this.state.user_id)
         .then((response_user) => {
             this.setState({data_user: response_user.data})
             // console.log(response_user)
             // localStorage.setItem('data', response_session.data)
         });
 
-        axios.get('http://androrohmana.us.openode.io/api/store/data/cart/' + this.state.store_id)
+        axios.get('localhost:3002/api/store/data/cart/' + this.state.store_id)
         .then((response_shop) => {
             this.setState({data_shop: response_shop.data})
             // console.log(response_shop)
             // console.log(store_id)
             // localStorage.setItem('data', response_session.data)
         });
-
         // console.log(localStorage.getItem("data_login"))
 
     }
@@ -38,10 +40,9 @@ class Header extends Component {
     render(){
         
         return(
-            <div>
-
-                <header class="header-area">
-                    <ul class="social-icon pull-left">
+            <div class="header-temanandro">
+                <header class="header-area hidden-xs hidden-sm">
+                    <ul class="social-icon pull-left ">
                         <li><a ><i class="fa fa-facebook"></i></a></li>
                         <li><a ><i class="fa fa-twitter"></i></a></li>
                         <li><a ><i class="fa fa-google-plus"></i></a></li>
@@ -71,7 +72,7 @@ class Header extends Component {
                             <Link to="login">
                             {this.state.data_user.username 
                                 ? ` ${this.state.data_user.username}` 
-                                : 'Masuk / Daftar '
+                                : 'Masuk / Daftar'
                             }
                             </Link>
                         </li>
@@ -94,15 +95,25 @@ class Header extends Component {
                     </section>
                 </header>
 
-                <div class="hidden-lg hidden-md" id="toggle-menu">
+                <Sidebar visible={this.state.visibleLeft} baseZIndex={10000000} onHide={(e) => this.setState({visibleLeft: false})}>
+                    <div class="pull-left" style={{width:'100%', textAlign: 'left'}}>
+                        <Link to='/' style={{padding: '10px', textAlign:'left'}} onClick={() => this.setState({visibleLeft:false})} >Home</Link><hr />
+                        <Link to='/shop' style={{padding: '10px', textAlign:'left'}} onClick={() => this.setState({visibleLeft:false})} >Shop</Link><hr />
+                        <Link to='/store' style={{padding: '10px', textAlign:'left'}} onClick={() => this.setState({visibleLeft:false})} >Store</Link><hr />
+                        <Link to='/shop' style={{padding: '10px', textAlign:'left'}} onClick={() => this.setState({visibleLeft:false})} >Shop</Link><hr />
+                    </div>
+                </Sidebar>
+
+                <div class="hidden-lg hidden-md" id="toggle-menu" style={{position: 'fixed', height:20, zIndex:1, backgroundColor:'white'  }}>
                     <div class="pull-left logo-area">
                         <a ><img src="http://androrohmana.com/countdown/images/logo-TA-3.png" alt="Logo" /></a>
                     </div>
                     <div class="mobile-menu-toggle pull-right">
-                        <a ><i class="fa fa-bars"></i></a>
+                        <a onClick={(e) => this.setState({visibleLeft:true})}><i class="fa fa-bars"></i></a>
                     </div>
                     <div class="clearfix"></div>
-                    <nav class="mobile-menu pull-left hidden-lg hidden-md">
+                    
+                    {/* <nav class="mobile-menu pull-left hidden-lg hidden-md">
                         <ul>
                             <li class="mobile-menu-has-children">
                                 <a href="index-2.html">Home</a>
@@ -132,7 +143,7 @@ class Header extends Component {
                             </li>
                             <li><a >Donate</a></li> 
                         </ul>
-                    </nav>
+                    </nav> */}
                 </div>
             </div>
         )

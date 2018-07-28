@@ -22,7 +22,36 @@
   font-size: large;
 }
 
+.header-temanandro{
+  padding-bottom: 15%;
+}
+
+
+@media only screen and (min-width: 500px) {
+ 
+  .header-temanandro{
+    padding-bottom: 15%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  
+  .header-temanandro{
+    padding-bottom: 8%;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+ 
+  .header-temanandro{
+    padding-bottom: 0%;
+  }
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */

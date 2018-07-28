@@ -22,7 +22,7 @@ class Detail_order extends Component{
 
     componentDidMount(){
         console.log(this.state.detail_order)
-        axios.get('http://androrohmana.us.openode.io/api/store/data/cart/' + this.state.detail_order)
+        axios.get('http://localhost:3002/api/store/data/cart/' + this.state.detail_order)
         .then((response_order) => {
             this.setState({detail_store: response_order.data.reverse()})
             console.log(response_order)

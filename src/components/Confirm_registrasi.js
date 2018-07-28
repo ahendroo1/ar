@@ -22,7 +22,7 @@ class Confirm_login extends Component{
             return (<Redirect to={'/member'}/>)
         }
 
-        axios.get('http://androrohmana.us.openode.io/api/login/confirm_registrasi/' + params._id + '/' + params.pass)
+        axios.get('http://localhost:3002/api/login/confirm_registrasi/' + params._id + '/' + params.pass)
         .then((response_confirm) => {
 
             if(response_confirm.data.status !== 0){
@@ -40,9 +40,6 @@ class Confirm_login extends Component{
             // console.log(response_user)
             // localStorage.setItem('data', response_session.data)
         });
-
-
-
     }
 
     render(){

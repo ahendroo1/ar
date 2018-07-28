@@ -29,7 +29,7 @@ class Shop extends Component{
     componentDidMount(){
         // console.log('data didmount')
 
-        axios.get('http://androrohmana.us.openode.io/api/barang/show_data')
+        axios.get('http://localhost:3002/api/barang/show_data')
         .then((response_barang) => {
             console.log(response_barang)
             this.setState({data_barang: response_barang.data.reverse()})
@@ -69,7 +69,7 @@ class Shop extends Component{
                    
             }else{
 
-                axios.post('http://androrohmana.us.openode.io/api/store/cart', {
+                axios.post('http://localhost:3002/api/store/cart', {
 
                     user_id: this.state.user_id,
                     nama_barang: this.state.data_barang_detail.nama_barang,
