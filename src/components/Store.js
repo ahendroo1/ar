@@ -20,6 +20,7 @@ class Store extends Component{
     }
 
     onHide(event) {
+
         this.setState({delete_cart: false, cancel_order: false});
     }
 
@@ -49,7 +50,6 @@ class Store extends Component{
         }
 
         console.log(this.state.data_shop.harga)
-
         
     }
 
@@ -60,7 +60,9 @@ class Store extends Component{
             nama_barang: nama_barang,
             harga: harga,
             jumbel: jumbel,
-            delete_cart: true})
+            delete_cart: true
+        })
+
     }
 
     delete_cart_server(){
@@ -76,7 +78,7 @@ class Store extends Component{
                     _id: '',
                     nama_barang: '',
                     harga: '',
-                    jumbel: '',    
+                    jumbel: '',
                 })
                 
                 this.componentDidMount()
@@ -85,6 +87,7 @@ class Store extends Component{
                 this.growl.show({severity:'success', summary:'Keranjang', detail:'Data Berhasil di Hapus'});
                 
             }).catch(() => {
+
                 this.growl.show({severity:'error', summary:'Hapus Keranjang', detail:'Gagal untuk di Hapus'});
             });
 
@@ -96,6 +99,7 @@ class Store extends Component{
     }
 
     checkout(){
+
         if(this.state.store_id){
             
             axios.post('http://localhost:3002/api/store/checkout/', {
@@ -193,8 +197,9 @@ class Store extends Component{
                     <div class="caption">
                         <h3>{nama_barang}</h3>
                         <br />
-                        <p class="text-left"> Harga : {convertToRupiah(harga)} </p><br />
-                        <p class="text-left"> Jumlah Beli : {jumbel}</p><br />
+                        <p class="text-left"> Harga : {convertToRupiah(harga)} </p>
+                        <p class="text-left"> Jumlah Beli : {jumbel}</p>
+                        <p class="text-left" > Size : {item.size} </p>
                         <p class="text-left"> Total Harga : {convertToRupiah(harga*jumbel)}</p><br />
                         <p>
                             <button onClick={() => this.delete_cart(item._id, nama_barang, harga, jumbel)} class="btn btn-danger btn-xs pull-right" role="button"><i class="fa fa-trash-o"></i></button>
@@ -359,6 +364,7 @@ class Store extends Component{
 
     detail_order_show(_id){
         if(_id){
+            
             localStorage.setItem('id_detail_order', _id);
             window.location.href = 'detail_order';
 

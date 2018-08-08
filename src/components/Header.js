@@ -34,11 +34,9 @@ class Header extends Component {
             // localStorage.setItem('data', response_session.data)
         });
         // console.log(localStorage.getItem("data_login"))
-
     }
 
     render(){
-        
         return(
             <div class="header-temanandro">
                 <header class="header-area hidden-xs hidden-sm">
@@ -53,9 +51,12 @@ class Header extends Component {
                             <li>
                                 <Link to="/" >Home</Link>
                             </li>
-                            <li><a href="biography.html">Biography</a></li>
-                            <li><a href="news.html">News</a></li>
-                            <li><a href="event.html">Event</a></li>
+                            <li>
+                                <Link to="/biografi" >Biografi</Link>
+                            </li>
+                            <li>
+                                <Link to="/event" >Event</Link>
+                            </li>
                         </ul>
                         <div class="pull-left logo-area">
                             <a ><img src="http://androrohmana.com/countdown/images/logo-TA-3.png" alt="Logo" /></a>
@@ -67,7 +68,6 @@ class Header extends Component {
                         </ul>
                     </nav>
                     <ul class="pull-right search-cart">
-
                         <li class="user-profile-menu">
                             <Link to="login">
                             {this.state.data_user.username 

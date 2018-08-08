@@ -34,6 +34,7 @@ class App extends Component {
           <Route path="/detail_order" component={DetailOrder} />
           <Route path="/confirm_registrasi/:_id/:pass" component={ConfirmRegistrasi} />
         <Footer />
+        <Route path="/news/:o" component={News} />
       </div>
     );
   }

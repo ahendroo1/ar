@@ -17,8 +17,8 @@ class Shop extends Component{
             data_user:[],
             order_detail: false,
             data_barang: [],
-            data_barang_detail: []
-            
+            data_barang_detail: [],
+            buttonState:''
         }
     }
 
@@ -29,7 +29,7 @@ class Shop extends Component{
     componentDidMount(){
         // console.log('data didmount')
 
-        axios.get('http://localhost:3002/api/barang/show_data')
+        axios.get('http://localhost:3002/api/barang/show_barang')
         .then((response_barang) => {
             console.log(response_barang)
             this.setState({data_barang: response_barang.data.reverse()})
@@ -74,6 +74,7 @@ class Shop extends Component{
                     user_id: this.state.user_id,
                     nama_barang: this.state.data_barang_detail.nama_barang,
                     harga: this.state.data_barang_detail.harga,
+                    size: this.refs.sz.value,
                     jumlah_beli: this.refs.jumbel.value,
                     img_url: this.state.data_barang_detail.img_url
                 
@@ -90,10 +91,8 @@ class Shop extends Component{
                 });
 
             }
-            
         }
     }
-
 
     render(){
 
@@ -126,7 +125,6 @@ class Shop extends Component{
                             <div class="filled-button" onClick={() => this.show_order(item)}>
                                 <i class="fa fa-shopping-cart"></i>
                             </div>
-                            
                         </div>
                         <h4><a>{item.nama_barang}</a></h4>
                         <p>{convertToRupiah(item.harga)}</p>
@@ -141,8 +139,8 @@ class Shop extends Component{
                 {/* <Header_shop /> */}
                 <Growl ref={(el) => this.growl = el}></Growl>
                 <Dialog header={this.state.data_barang_detail.nama_barang} visible={this.state.order_detail}  modal={true} minY={70} onHide={this.onHide} maximizable={true}>
-                                    
                     <div class="product-details">
+
                         <div class="product-img">
                             <img src={this.state.data_barang_detail.img_url} alt="" />
                         </div>
@@ -150,6 +148,14 @@ class Shop extends Component{
 
                     </div>
                     <hr />
+                    <select className="form-control" ref='sz' >
+                        <option value="0">Tidak ada size</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select><br />
                         Jumlah Beli :
                         <input ref="jumbel" placeholder="00" style={{width: '40%'}} type="number"   />
                         = { convertToRupiah(this.state.data_barang_detail.harga ? this.state.data_barang_detail.harga : 0 ) }
