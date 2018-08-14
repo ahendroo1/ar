@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 import { InputText } from "primereact/inputtext";
 
 class Login extends Component{
+    
     constructor(){
         super()
         this.onHide = this.onHide.bind(this);
@@ -14,22 +15,15 @@ class Login extends Component{
             user_id: localStorage.getItem('data_login')
         }
     }
+
     onHide(event) {
         this.setState({forgot_pass: false});
     }
 
     componentDidMount(){
 
-        // axios.get('http://localhost:3002/api/login/session')
-        // .then((response_session) => {
-        //     console.log(response_session)
-        //     // localStorage.setItem('data', response_session.data)
-        // });
-
         if(this.state.user_id === null){
-
             return (<Redirect to={'/login'} />)
-
         }else{
 
             return (<Redirect to={'/member'} userId={this.state.user_id} />)
